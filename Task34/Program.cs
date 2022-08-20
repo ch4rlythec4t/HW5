@@ -4,11 +4,11 @@ class Program
     static int[] CreateArray(int ArrayLength)
     {
         int[] CreateArray = new int[ArrayLength];
-        int CreateArrayCount = 0;
+      
         for (int i = 0; i < ArrayLength; i++)
         {
             CreateArray[i] = new Random().Next(100, 999);
-            if (CreateArray[i] % 2 == 0) CreateArrayCount++;
+        
         }
 
         return CreateArray;
