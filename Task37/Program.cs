@@ -3,24 +3,44 @@ class Program
 {
     static int[] CreateArray()
     {
-        Console.WriteLine("Введите длину массива: ");
-        newArrayLength = Convert.ToInt32.(Console.ReadLine());
-
-        int[] newArray = new int[newArrayLength];
-        for (int i = 0; i < newArray.Length; i++)
+        Console.Write("Ведите длину массива: ");
+        int NewArrayLenght = Convert.ToInt32(Console.ReadLine());
+        int[] NewArray = new int[NewArrayLenght];
+        for (int i = 0; i < NewArrayLenght; i++)
         {
-            newArray[i] = new Random().Next();
+            NewArray[i] = new Random().Next(10);
         }
 
-        return newArray;
+        return NewArray;
     }
 
-    int[] MuliplicationPairArray(int[] Array)
-    {
+    static int[] MultiplyPairArray(int[] Array)
+    {   int MultiplyArrayLenght = (Array.Length % 2 == 0) ? (Array.Length / 2): ((Array.Length / 2)+1);
+        int[] MultiplyArray = new int[MultiplyArrayLenght];
+        for (int i = 0; i < MultiplyArrayLenght; i++)
+        {
+          
+          MultiplyArray[i] = (Array.Length % 2 != 0) && (i == (Array.Length / 2)) ?  Array[i] : (Array[i] * Array[Array.Length - 1- i]);
+        }
 
+        return MultiplyArray;
+    }
+
+    static void WriteArray(int[] Array)
+    {
+        for (int i = 0; i < Array.Length; i++)
+        {
+            if (i == 0) Console.Write("[" + Array[i] + ", ");
+            else if (i == Array.Length - 1) Console.Write(Array[i] + "]");
+            else Console.Write(Array[i] + ", ");
+        }
     }
     static void Main()
     {
-
+        int[] Array = CreateArray();
+        int[] ResaultArray = MultiplyPairArray(Array);
+        WriteArray(Array: Array);
+        Console.Write( " -> ");
+        WriteArray(Array: ResaultArray);
     }
 }
